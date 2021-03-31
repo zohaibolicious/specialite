@@ -22,6 +22,8 @@ environment:
 
 dependencies:
   google_fonts: ^1.1.1
+  font_awesome_flutter: ^8.2.0
+  flutter_signin_button: ^1.1.0
   flutter:
     sdk: flutter
   # google_maps_flutter: ^0.5.28+1
@@ -48,10 +50,16 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
+    - assets/Icons/facebook.png
+    - assets/Icons/googleicon.png
+    - assets/Icons/Specialite.png
+
+  fonts:
+    - family: Vivaldi
+      fonts:
+        - asset: assets/Fonts/vivaldi.ttf
+        - asset: assets/fonts/vivaldicap.ttf
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

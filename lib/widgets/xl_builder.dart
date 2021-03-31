@@ -10,7 +10,7 @@ class XLBuilder extends StatelessWidget {
         child: ListView(
             physics: PageScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
             children: RestaurantService().getRestaurants().map((object) {
               return XLCard(restoObject: object); //Feature(photo);
             }).toList()));

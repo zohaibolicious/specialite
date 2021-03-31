@@ -19,8 +19,9 @@ class Discovery extends StatelessWidget {
       slivers: [
         SliverAppBar(
           backgroundColor: Colors.white,
-          expandedHeight: 120,
-          floating: false,
+          shadowColor: Colors.white.withOpacity(0.9),
+          expandedHeight: 100,
+          floating: true,
           pinned: true,
           elevation: 2,
           flexibleSpace: FlexibleSpaceBar(
@@ -41,13 +42,13 @@ class Discovery extends StatelessWidget {
                         snapshot.data.city,
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
-                                color: Color.fromARGB(255, 239, 67, 37),
+                                color: Color.fromARGB(255, 224, 177, 65),
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold)),
                       ),
                     ]);
                   } else {
-                    return Text('Discover ',
+                    return Text('couldn\'t fetch location',
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                                 color: Colors.black,
@@ -85,8 +86,8 @@ class Discovery extends StatelessWidget {
                               'See all',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                           ),
                         ],
@@ -127,8 +128,8 @@ class Discovery extends StatelessWidget {
                               'See all',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                           ),
                         ],
@@ -150,8 +151,8 @@ class Discovery extends StatelessWidget {
                               'Redeem Code',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                             trailing: Icon(Icons.navigate_next),
                             onTap: () => {},
@@ -167,8 +168,8 @@ class Discovery extends StatelessWidget {
                               'Customer Support',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                             trailing: Icon(Icons.navigate_next),
                             onTap: () => {},
@@ -184,8 +185,8 @@ class Discovery extends StatelessWidget {
                               'Send a gift',
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                                fontWeight: FontWeight.bold,
+                              )),
                             ),
                             trailing: Icon(Icons.navigate_next),
                             onTap: () => {},

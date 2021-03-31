@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math' as math;
 import 'package:specialite/datamodels/category_object.dart';
 import 'package:specialite/datamodels/dish_object.dart';
 import 'package:http/http.dart' as http;
@@ -11,14 +10,14 @@ class DishService {
   Future<DishObject> fetchARandomDish() async {
     List<DishObject> _listOfDishes = [];
     final response =
-    await http.get('https://www.themealdb.com/api/json/v1/1/random.php');
+        await http.get('https://www.themealdb.com/api/json/v1/1/random.php');
 
     if (response.statusCode == 200) {
       Map<String, dynamic> d = jsonDecode(response.body);
       //TODO needs refactoring
       _listOfDishes = List<DishObject>.from(
         d['meals'].map(
-              (x) => DishObject.fromJson(x),
+          (x) => DishObject.fromJson(x),
         ),
       );
 
@@ -41,7 +40,7 @@ class DishService {
         break;
       }
       List<DishObject> fetchedDishes =
-      await CategoryService().fetchDishesByCategory(categories[i]);
+          await CategoryService().fetchDishesByCategory(categories[i]);
 
       for (DishObject obj in fetchedDishes) {
         if (dishes.length > 10) {
@@ -54,7 +53,7 @@ class DishService {
           Map<String, dynamic> d = jsonDecode(response.body);
           List<DishObject> _listOfDishes = List<DishObject>.from(
             d['meals'].map(
-                  (x) => DishObject.fromJson(x),
+              (x) => DishObject.fromJson(x),
             ),
           );
 

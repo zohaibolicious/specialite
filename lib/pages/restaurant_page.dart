@@ -1,6 +1,5 @@
 import 'package:specialite/datamodels/restaurant_object.dart';
 import 'package:flutter/material.dart';
-import 'package:specialite/datamodels/user_location.dart';
 import 'package:specialite/widgets/collapsable_restaurant_page_header.dart';
 import 'package:specialite/widgets/menu_builder.dart';
 import '../constants.dart' as constants;
@@ -46,34 +45,34 @@ class _RestaurantPageState extends State<RestaurantPage> {
                           backgroundColor: Colors.grey[200],
                           child: widget.restoObject.isFavorite
                               ? IconButton(
-                            splashRadius: 25,
-                            padding: EdgeInsets.all(0),
-                            icon: Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                              size: 30,
-                            ),
-                            onPressed: () {
-                              super.setState(
-                                    () {
-                                  widget.restoObject.isFavorite = false;
-                                },
-                              );
-                            },
-                          )
+                                  splashRadius: 25,
+                                  padding: EdgeInsets.all(0),
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 30,
+                                  ),
+                                  onPressed: () {
+                                    super.setState(
+                                      () {
+                                        widget.restoObject.isFavorite = false;
+                                      },
+                                    );
+                                  },
+                                )
                               : IconButton(
-                              splashRadius: 25,
-                              padding: EdgeInsets.all(0),
-                              icon: Icon(
-                                Icons.favorite_border,
-                                color: Colors.black,
-                                size: 30,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  widget.restoObject.isFavorite = true;
-                                });
-                              }),
+                                  splashRadius: 25,
+                                  padding: EdgeInsets.all(0),
+                                  icon: Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.black,
+                                    size: 30,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      widget.restoObject.isFavorite = true;
+                                    });
+                                  }),
                         ),
                       ],
                     ),
@@ -168,8 +167,8 @@ class _RestaurantPageState extends State<RestaurantPage> {
                   constants.PULL_DATA_FROM_WEB
                       ? MenuBuilder()
                       : Center(
-                    child: Text('constants.PULL_DATA_FROM_WEB = false'),
-                  )
+                          child: Text('constants.PULL_DATA_FROM_WEB = false'),
+                        )
                 ],
               ),
             )
