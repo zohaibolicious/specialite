@@ -6,6 +6,14 @@ import 'package:specialite/screens/profile.dart';
 import 'package:specialite/screens/search.dart';
 import 'package:specialite/services/location_service.dart';
 import 'package:specialite/services/category_service.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:specialite/phone-auth.dart';
+import 'package:specialite/phone.dart';
+import 'package:specialite/signup.dart';
+import 'package:specialite/signup2.dart';
+import 'package:specialite/signup3.dart';
+
+import 'login-options.dart';
 import 'constants.dart' as constants;
 
 void main() {
@@ -27,6 +35,16 @@ class MyApp extends StatelessWidget {
           behavior: MyBehavior(),
           child: child,
         );
+      },
+      initialRoute: '/login-options',
+      routes: {
+        '/login-options': (context) => HomePage(),
+        '/sign-up': (context) => SignupPage(),
+        '/sign-up2': (context) => SignupPage2(),
+        '/sign-up3': (context) => SignupPage3(),
+        '/phone': (context) => PhonePage(),
+        '/phone-auth': (context) => PhoneAuthPage(),
+        'home': (context) => Home(),
       },
       home: Home(),
     );

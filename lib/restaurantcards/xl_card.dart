@@ -19,7 +19,7 @@ class XLCard extends StatelessWidget {
                 child: Stack(
                   children: <Widget>[
                     Container(
-                      width: 415,
+                      width: 380,
                       height: 245,
                       child: CachedNetworkImage(
                         placeholder: (context, url) =>
@@ -29,7 +29,7 @@ class XLCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                        bottom: 16,
+                        bottom: 10,
                         left: 16,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +68,7 @@ class XLCard extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 elevation: 5,
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16),
               ),
             ]),
         onTap: () {

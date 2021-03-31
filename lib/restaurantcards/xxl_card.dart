@@ -33,61 +33,61 @@ class _XXLCardState extends State<XXLCard> {
                   height: 215,
                   child: CachedNetworkImage(
                       placeholder: (context, url) => Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                            child: CircularProgressIndicator(),
+                          ),
                       fit: BoxFit.cover,
                       imageUrl: widget.restoObject.imageURL),
                 ),
                 widget.restoObject.isFavorite
                     ? Positioned(
-                  top: 10,
-                  right: 10,
-                  child: IconButton(
-                    padding: EdgeInsets.all(0),
-                    icon: Icon(
-                      Icons.favorite,
-                      color: Colors.redAccent,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      setState(
-                            () {
-                          widget.restoObject.isFavorite = false;
-                        },
-                      );
-                    },
-                  ),
-                )
-                    : Positioned(
-                    top: 10,
-                    right: 10,
-                    child: IconButton(
-                        padding: EdgeInsets.all(0),
-                        icon: Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
-                          size: 30,
+                        top: 10,
+                        right: 10,
+                        child: IconButton(
+                          padding: EdgeInsets.all(0),
+                          icon: Icon(
+                            Icons.favorite,
+                            color: Colors.redAccent,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            setState(
+                              () {
+                                widget.restoObject.isFavorite = false;
+                              },
+                            );
+                          },
                         ),
-                        onPressed: () {
-                          setState(() {
-                            widget.restoObject.isFavorite = true;
-                          });
-                        })),
+                      )
+                    : Positioned(
+                        top: 10,
+                        right: 10,
+                        child: IconButton(
+                            padding: EdgeInsets.all(0),
+                            icon: Icon(
+                              Icons.favorite_border,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                widget.restoObject.isFavorite = true;
+                              });
+                            })),
                 widget.restoObject.isNew
                     ? Positioned(
-                    top: 12,
-                    left: 12,
-                    child: Card(
-                      color: Color.fromARGB(255, 224, 177, 65),
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                        child: Center(
-                            child: Text(
+                        top: 12,
+                        left: 12,
+                        child: Card(
+                          color: Color.fromARGB(255, 255, 215, 0),
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            child: Center(
+                                child: Text(
                               'NEW!',
                               style: TextStyle(color: Colors.white),
                             )),
-                      ),
-                    ))
+                          ),
+                        ))
                     : Container(),
               ],
             ),
@@ -135,7 +135,8 @@ class _XXLCardState extends State<XXLCard> {
                           ),
                           Text(
                             'min',
-                            style: TextStyle(color: Color.fromARGB(255, 224, 177, 65)),
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 224, 177, 65)),
                           )
                         ],
                       ),
@@ -169,8 +170,8 @@ class _XXLCardState extends State<XXLCard> {
                       child: widget.restoObject.rating >= 9
                           ? Text(' 😍 ')
                           : widget.restoObject.rating >= 8
-                          ? Text(' 😀 ')
-                          : Text(' 😔 ')),
+                              ? Text(' 😀 ')
+                              : Text(' 😔 ')),
                   Text(
                     widget.restoObject.rating.toString(),
                     style: TextStyle(color: Colors.grey),
