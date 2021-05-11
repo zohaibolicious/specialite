@@ -1,117 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:specialite/screens/delivery.dart';
-import 'package:specialite/screens/discovery.dart';
-import 'package:specialite/screens/nearby.dart';
-import 'package:specialite/screens/profile.dart';
-import 'package:specialite/screens/search.dart';
-import 'package:specialite/services/location_service.dart';
-import 'package:specialite/services/category_service.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:specialite/phone-auth.dart';
-import 'package:specialite/phone.dart';
-import 'package:specialite/signup.dart';
-import 'package:specialite/signup2.dart';
-import 'package:specialite/signup3.dart';
+import 'package:flutter/services.dart';
 
-import 'login-options.dart';
-import 'constants.dart' as constants;
+import 'screens/auth_screen.dart';
+import 'screens/phone_screen.dart';
+import 'screens/verification_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/email_screen.dart';
+import 'screens/tabs_screen.dart';
+import 'screens/restaurant_screen.dart';
 
 void main() {
-  print('Application starting');
   runApp(MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+    statusBarIconBrightness: Brightness.dark,
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    constants.userLocation ??= LocationService().pullLocationData();
-    constants.categories ??= CategoryService().fetchCategoryObjects();
-
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Specialite',
-      builder: (context, child) {
-        return ScrollConfiguration(
-          behavior: MyBehavior(),
-          child: child,
-        );
-      },
-      initialRoute: '/login-options',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TabsScreen(),
       routes: {
-        '/login-options': (context) => HomePage(),
-        '/sign-up': (context) => SignupPage(),
-        '/sign-up2': (context) => SignupPage2(),
-        '/sign-up3': (context) => SignupPage3(),
-        '/phone': (context) => PhonePage(),
-        '/phone-auth': (context) => PhoneAuthPage(),
-        'home': (context) => Home(),
+        AuthScreen.routeName: (ctx) => AuthScreen(),
+        PhoneScreen.routeName: (ctx) => PhoneScreen(),
+        VerificationScreen.routeName: (ctx) => VerificationScreen(),
+        HomeScreen.routeName: (ctx) => HomeScreen(),
+        EmailScreen.routeName: (ctx) => EmailScreen(),
+        TabsScreen.routeName: (ctx) => TabsScreen(),
+        RestaurantScreen.routeName: (ctx) => RestaurantScreen(),
       },
-      home: Home(),
-    );
-  }
-}
-
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
-  }
-}
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-
-  final tabs = [
-    Discovery(),
-    Delivery(),
-    Nearby(),
-    Search(),
-    Profile(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: _currentIndex,
-          type: BottomNavigationBarType.fixed,
-          iconSize: 27,
-          selectedItemColor: Color.fromARGB(255, 239, 67, 37),
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard),
-                title: Text('Discover'),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border),
-                title: Text('Favourites'),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.directions_walk),
-                title: Text('Near by'),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                title: Text('Search'),
-                backgroundColor: Colors.black),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                title: Text('Me'),
-                backgroundColor: Colors.black),
-          ],
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          }),
     );
   }
 }

@@ -1,15 +1,16 @@
-# Specialite
+# specialite
 
-Specialite app made with Flutter.
-The goal of this project is to create a food ordering app in Flutter.
+A new Flutter project.
 
-To run, you need to have Flutter 1.20.3 and Dart 2.9.2 as it might not work with newer versions
+## Getting Started
 
-Project by Stardisk Pakistan
+This project is a starting point for a Flutter application.
 
-Colors used in UI
-Red : fromARGB(255, 239, 67, 37),
-Blue: fromARGB(255, 51, 192, 192),
-Gold: fromARGB(255, 224, 177, 65),
-Grey: fromARGB(255, 189, 188, 193),
-Bright Golden: fromARGB(255, 255, 215, 0),
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
