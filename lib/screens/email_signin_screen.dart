@@ -14,17 +14,22 @@ class EmailSignInScreen extends StatefulWidget {
 
 class _EmailSignInScreenState extends State<EmailSignInScreen> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   //text field states
   String email = "";
   String password = "";
+  String error = '';
 
   void signIn() async {
-    dynamic result = await _auth.signInEmail();
+    dynamic result = await _auth.signInEmail(email, password);
     if (result == null) {
-      print("Error Signed In");
+      setState(() {
+        error = 'Invalid Credentials';
+      });
+      print("Error signing in");
     } else {
-      print("Signed Inn");
+      print("Signed in");
     }
   }
 
@@ -68,12 +73,16 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
                         ),
                         SizedBox(height: 30),
                         Form(
+                          key: _formKey,
                           child: Column(
                             children: [
                               TextFormField(
+                                validator: (value) =>
+                                    value.isEmpty ? 'Email Empty!' : null,
                                 onChanged: (value) {
                                   setState(() {
                                     email = value;
+                                    error = "";
                                   });
                                 },
                                 decoration: InputDecoration(
@@ -96,9 +105,12 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
                               ),
                               SizedBox(height: 20.0),
                               TextFormField(
+                                validator: (value) =>
+                                    value.isEmpty ? 'Password Empty!' : null,
                                 onChanged: (value) {
                                   setState(() {
                                     password = value;
+                                    error = "";
                                   });
                                 },
                                 obscureText: true,
@@ -121,10 +133,20 @@ class _EmailSignInScreenState extends State<EmailSignInScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              SizedBox(height: 5),
+                              Text(
+                                error,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.red),
+                              ),
+                              SizedBox(height: 5),
                               PillButton(
-                                onPressed: () async {
-                                  signIn();
+                                onPressed: () {
+                                  if (_formKey.currentState.validate()) {
+                                    signIn();
+                                  }
                                 },
                                 //Navigator.of(context).pushNamed(PhoneScreen.routeName),
                                 buttonText: "Sign in",

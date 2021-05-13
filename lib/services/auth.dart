@@ -17,9 +17,10 @@ class AuthService {
 
 //sign in with email & pass
 
-  Future signInEmail() async {
+  Future signInEmail(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInAnonymously();
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       FirebaseUser user = result.user;
       print(user.uid);
       return _createUser(user);
@@ -29,11 +30,11 @@ class AuthService {
     }
   }
 
-
 //sign up with email ans pass
-Future signUpEmail(String email, String password) async {
-  try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password );
+  Future signUpEmail(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       FirebaseUser user = result.user;
       print(user.uid);
       return _createUser(user);
@@ -41,7 +42,7 @@ Future signUpEmail(String email, String password) async {
       print(e.toString());
       return null;
     }
-}
+  }
 
 //sign out
 
@@ -49,7 +50,7 @@ Future signUpEmail(String email, String password) async {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print("Sign Out Error: "+e.toString());
+      print("Sign Out Error: " + e.toString());
     }
   }
 }

@@ -25,7 +25,7 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
     dynamic result = await _auth.signUpEmail(email, password);
     if (result == null) {
       setState(() {
-        error = 'Invalid email address';
+        error = "Invalid credentials. Try Again";
       });
       print("Error signing up");
     } else {
@@ -223,6 +223,14 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                                         color: Colors.amber[800]),
                                   ),
                                 )),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                error,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.red),
                               ),
                             ],
                           ),
